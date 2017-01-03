@@ -1,0 +1,7 @@
+From node
+
+ADD . /app
+
+RUN cd /app && npm install
+
+CMD ["node", "client.js"]

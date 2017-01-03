@@ -1,0 +1,26 @@
+{
+  "name": "web",
+  "version": "1.0.0",
+  "description": "",
+  "main": "client.js",
+  "dependencies": {
+    "socket.io": "^1.7.2",
+    "socket.io-client": "^1.7.2",
+    "socket.io-redis": "^2.0.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/peihsinsu/socket-example.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/peihsinsu/socket-example/issues"
+  },
+  "homepage": "https://github.com/peihsinsu/socket-example#readme"
+}
