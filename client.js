@@ -1,5 +1,5 @@
 var util = require('util');
-var socket_server = process.argv[2] || 'http://localhost:3000';
+var socket_server = process.env.SOCKET_SERVER || process.argv[2] || 'http://localhost:3000';
 
 console.log('using server:', socket_server);
 

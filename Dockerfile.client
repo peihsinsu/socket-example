@@ -1,6 +1,7 @@
 From node
 
 ADD . /app
+WORKDIR /app
 
 RUN cd /app && npm install
 
