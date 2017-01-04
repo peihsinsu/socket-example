@@ -43,4 +43,22 @@ export INTERVAL=3000
 node client.js
 ```
 
+## Run server using docker
+
+```
+docker run -d --restart=always \
+  -e REDIS_SERVER=ts-db \
+  -e BROADCAST=true \
+  -p 3000:3000 peihsinsu/socket-web-example
+```
+
+## Run client using docker
+
+```
+docker run -d --restart=always \
+  -e SOCKET_SERVER=http://ts-apserver:3000 \
+  -e TALK=true \
+  peihsinsu/socket-client-example
+```
+
 
