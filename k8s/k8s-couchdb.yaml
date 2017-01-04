@@ -1,0 +1,39 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ts-couchdb
+  labels:
+    app: couchdb
+    tier: ts-couchdb
+spec:
+  ports:
+  - port: 5984
+    targetPort: 5984
+  selector:
+    app: couchdb
+    tier: ts-couchdb
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: ts-couchdb
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: couchdb
+        tier: ts-couchdb
+    spec:
+      containers:
+        - name: couchdb
+          image: couchdb
+          ports:
+          - containerPort: 5984
+          env:
+          - name: COUCHDB_USER
+            value: admin
+          - name: COUCHDB_PASSWORD
+            value: 1234qwer
+          - name: GET_HOSTS_FROM
+            value: dns

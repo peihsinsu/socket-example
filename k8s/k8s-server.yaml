@@ -1,0 +1,40 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ts-server
+  labels:
+    app: ts-server
+    tier: ts-server
+spec:
+  ports:
+    # the port that this service should serve on
+  - port: 3000
+    targetPort: 3000
+  type: LoadBalancer
+  selector:
+    app: ts-server
+    tier: ts-server
+  sessionAffinity: ClientIP
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: ts-server
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: ts-server
+        tier: ts-server
+    spec:
+      containers:
+      - name: ts-server
+        image: peihsinsu/socket-web-example
+        ports:
+        - containerPort: 3000
+        env:
+        - name: NODE_ENV
+          value: production
+        - name: GET_HOSTS_FROM
+          value: dns

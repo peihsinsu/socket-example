@@ -12,3 +12,5 @@ run-server:
 
 run-client:
 	docker run -e SOCKET_SERVER=http://ts-apserver:3000 -e TALK=true peihsinsu/socket-client-example
+
+
