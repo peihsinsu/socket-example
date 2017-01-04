@@ -16,7 +16,7 @@ socket.on('connect', function(){
 });
 
 socket.on('message', function(data){
-  console.log('[%s] got event...', socket.id, data);
+  console.log('[%s][%s] got event...', socket.id, new Date().getTime(), data);
 });
 
 if(process.env.TALK) {

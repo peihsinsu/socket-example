@@ -1,7 +1,6 @@
 var server = require('http').createServer();
 var io = require('socket.io')(server);
 
-
 if(process.env.REDIS_SERVER) {
 	//For clustering socket server
 	var redis = require('socket.io-redis');
@@ -9,7 +8,7 @@ if(process.env.REDIS_SERVER) {
 	io.adapter(redis({ host: process.env.REDIS_SERVER || 'localhost', port: 6379 }));
 }
 
-io.on('connection', function(client){
+var sio = io.on('connection', function(client){
   client.on('message', function(data){
     console.log('Got message:', data);
   });
@@ -23,9 +22,13 @@ io.on('connection', function(client){
 		console.log('client:%s disconnect', client.id);
   });
 });
+
+if(process.env.BROADCAST)
+setInterval(function() {
+	sio.emit('message','sio emit... ' + new Date().getTime());
+}, process.env.INTERVAL || 3000);
+
 server.listen(process.env.PORT || 3000);
-
-
 
 var talk = ['hello!', 'nice to meet you....', 'good job', 'gg...@@',
   'who are you?', 'good morning', ':D', ':(', 'give up...'];
