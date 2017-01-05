@@ -6,6 +6,9 @@ build-client:
 
 build-all: build-server build-client
 
+push-all: build-all
+	docker push peihsinsu/socket-web-example
+	docker push peihsinsu/socket-client-example
 
 run-server:
 	docker run -d --restart always -e REDIS_SERVER=ts-db -p 3000:3000 peihsinsu/socket-web-example
