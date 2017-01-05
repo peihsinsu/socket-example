@@ -1,5 +1,6 @@
 var server = require('http').createServer();
 var io = require('socket.io')(server);
+var monitor = require('./monitor');
 
 if(process.env.REDIS_SERVER) {
 	//For clustering socket server
