@@ -12,6 +12,10 @@ var cfg = {
   }
 var cradle = require('cradle');
 var conn = new(cradle.Connection)(cfg);
+var sockets = 0;
+exports.setSockets = function(i){
+	sockets = i;
+};
 
 function initdb(dbname) {
 	log.info('initialize %s db', dbname);
@@ -42,7 +46,8 @@ var db = initdb('healthcheck');
 setInterval(function(){
 	stat.healthcheck(function(err, data){
 		if(err) log.error(err);
-		log.info('[%s] %s %s %s', new Date(), data.hostname, data.cpu_used, data.mem_used);
+		data['sockets'] = sockets;
+		log.info('[%s] %s %s %s %s', new Date(), data.hostname, data.cpu_used, data.mem_used, sockets);
 		db.save(data, function(err, result) {
 			if(err) log.error('Save data error:', err);
 		});
