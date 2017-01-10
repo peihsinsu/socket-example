@@ -56,7 +56,7 @@ setInterval(function(){
 		if(err) log.error(err);
 		data['sockets'] = sockets;
 		log.info('[%s] %s %s %s %s', new Date(), data.hostname, data.cpu_used, data.mem_used, sockets);
-		db.save(data, function(err, result) {
+		db.save(data.hostname, data, function(err, result) {
 			if(err) log.error('Save data error:', err);
 		});
 	});
