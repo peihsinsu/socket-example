@@ -16,11 +16,12 @@ exports.run = function(io) {
     });
 
     //if(process.env.BROADCAST)
-    // setInterval(function() {
+    setInterval(function() {
+        console.log('current connected devices...', Object.keys(sio.sockets).length);
     //     sio.emit('message', 'sio emit... ' + new Date().getTime());
     //     if (process.env.COUCHDB)
     //         monitor.setSockets(Object.keys(sio.sockets).length);
-    // }, process.env.INTERVAL || 3000);
+    }, process.env.INTERVAL || 3000);
 
     // server.listen(process.env.PORT || 3000);
 
