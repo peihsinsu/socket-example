@@ -61,4 +61,10 @@ docker run -d --restart=always \
   peihsinsu/socket-client-example
 ```
 
+Run with docker service (swarm mode)
 
+```
+docker service create \
+  -e SOCKET_SERVER=http://104.199.211.209:3000  \
+  -e TALK=true   peihsinsu/socket-client-example
+```

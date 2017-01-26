@@ -17,6 +17,14 @@ exports.setSockets = function(i){
 	sockets = i;
 };
 
+/** 
+ * Run couchdb:
+ * docker run -d -e COUCHDB_USER=admin -e COUCHDB_PASSWORD=1234qwer \
+ *   --restart=always \
+ *   -v `pwd`:/usr/local/var/lib/couchdb \
+ *   -p 5984:5984 \
+ *   --name couchdb couchdb
+ */
 function initdb(dbname) {
 	log.info('initialize %s db', dbname);
 	var db = conn.database(dbname);
