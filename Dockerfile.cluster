@@ -1,0 +1,10 @@
+From node
+
+ADD . /app
+WORKDIR /app
+
+RUN cd /app && npm install
+
+EXPOSE 3000
+
+CMD ["node", "cluster.js"]

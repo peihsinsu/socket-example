@@ -1,6 +1,9 @@
 build-server:
 	docker build -f Dockerfile.server -t peihsinsu/socket-web-example .
 
+build-cluster:
+	docker build -f Dockerfile.cluster -t peihsinsu/socket-web-example .
+
 build-client:
 	docker build -f Dockerfile.client -t peihsinsu/socket-client-example .
 
