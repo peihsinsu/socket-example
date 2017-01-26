@@ -1,0 +1,10 @@
+From linkerlab/rpi-node:5.9.1-armv7l 
+
+ADD . /app
+WORKDIR /app
+
+RUN cd /app && npm install
+
+EXPOSE 3000
+
+CMD ["node", "server.js"]
