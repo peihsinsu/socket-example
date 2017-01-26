@@ -1,5 +1,6 @@
 exports.run = function(io) {
     var sio = io.on('connection', function(client) {
+        console.log('client:%s connected....', client.id);
         client.on('message', function(data) {
             console.log('Got message:', data);
             sio.emit('message', data); //broadcast to everyone...
