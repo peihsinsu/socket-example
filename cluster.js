@@ -43,7 +43,7 @@ if (cluster.isMaster) {
     var server = app.listen(0, 'localhost'),
         io = sio(server);
 
-    io.adapter(sio_redis({ host: 'localhost', port: 6379 }));
+    io.adapter(sio_redis({ host: (process.env.REDIS_SERVER || 'localhost'), port: 6379 }));
 
 
 //start cluster..................................................................

@@ -30,7 +30,7 @@ var fn = function(x) {
     console.log('client:', x);
 };
 
-//if(process.env.BROADCAST)
+if(process.env.BROADCAST)
 setInterval(function() {
     sio.emit('message', 'sio emit... ' + new Date().getTime());
     var d = {
