@@ -24,7 +24,7 @@ var sio = io.on('connection', function(client){
   });
 });
 
-//if(process.env.BROADCAST)
+if(process.env.BROADCAST)
 setInterval(function() {
 	sio.emit('message','sio emit... ' + new Date().getTime());
 	console.log('sio:', Object.keys(sio.sockets).length);
